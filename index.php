@@ -2,8 +2,9 @@
 require_once("autoload.php");
 
 global $base_url;
-if (isset($_GET['page'])) {
-    switch ($_GET['page']) {
+if (isset($_GET["p"])) {
+    $page = $_GET["p"];
+    switch ($page) {
         case 'login':
             showLogin();
             break;
@@ -14,12 +15,7 @@ if (isset($_GET['page'])) {
             showCreatePost();
             break;
         case 'comment':
-            if (isset($_GET['id'])) {
-                showCreatePost($_GET['id']);
-
-            } else {
-                header("Location: $base_url");
-            }
+            showPost($_GET['id']);
             break;
         case 'logout':
             logOut();

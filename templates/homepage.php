@@ -35,8 +35,7 @@ $title="accueil";
         $post['title']?>
             <div class="comment-section m-3">
                     <?php if ($GLOBALS['isConnected']) {?>
-                        <form action="<?php $base_url?>?page=comment" method="POST">
-                        <p class="title">Laissez un commentaire : </p>
+                    <form action="<?php $base_url?>?page=comment" method="POST">
                         <textarea name="content" class="my-2" rows="5">  </textarea>
                         <button type="submit"  class="btn btn-primary my-3">Commenter</button>
                     </form>

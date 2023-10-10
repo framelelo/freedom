@@ -1,7 +1,7 @@
 <?php
 session_start();
 global $base_url;
-$base_url = "http://localhost/kozer";
+$base_url = "http://localhost/freedom";
 
 global $isConnected;
 $isConnected = $_SESSION && $_SESSION["users"];

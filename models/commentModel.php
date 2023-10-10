@@ -10,11 +10,13 @@ function createComment($id_user, $id_post, $content)
             "c" => $content,
             'd' => date("Y-m-d H:i:s")
         ]);
+        return true;
     }
     catch (PDOEXCEPTION $e) {
+        echo $e = get_message();
         return false;
     }
-
+    return false;
 }
 
 function getComments($id_post)

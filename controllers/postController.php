@@ -20,12 +20,12 @@ function showPost($id)
     $post = getPost($id);
     $comment = getComments($id);
     global $base_url;
-    if ($_POST && $_POST['content']) {
-        createComment($_SESSION['users']['id'], $id, $_POST['content']) ;
+    if ($_POST && $_POST['content'] ) {
+        createComment($_POST['content'], $_SESSION['users']['id'], $id) ;
         echo '<p class="message px-2">Commentaire ajouté !</p>'; 
            
         showHomePage();
-    }
+    }else echo 'erreur';
 
 
     if (sizeof($post)) {
