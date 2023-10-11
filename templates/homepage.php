@@ -8,6 +8,8 @@ $title="accueil";
 ?>
     <h1><?= $title?></h1>
     <div class="container container_form px-4">
+
+  <!-- SHOW POSTS -->
         <?php if ($isConnected){?>
             <form method="POST" action="<?php $base_url?>?page=publish">
                 <div class="form-group mb-3">           
@@ -29,7 +31,9 @@ $title="accueil";
                 <div class="right my-5">
                     <button type="submit" class="btn btn-primary">PUBLIER</button>
                 </div>
-            </form>
+            </form>  
+            
+            <!-- SHOW COMMENTS -->
         <?php };
         foreach($posts as $post){ echo 
         $post['title']?>
