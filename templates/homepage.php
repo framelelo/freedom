@@ -16,7 +16,7 @@ $title="accueil";
                     <div class="custom-file">
                         <label class="label" for="post_picture">Ajouter une photo</label>
                         <br>
-                        <input type="file" class="upload_picture" id="post_picture" accept=".png,.jpg,.jpeg,.webp">
+                        <input type="file" class="upload_picture" name="post_img" id="post_picture" accept=".png,.jpg,.jpeg,.webp">
                     </div>
                 </div>
                 <div class="form-group mb-3">

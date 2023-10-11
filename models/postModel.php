@@ -1,12 +1,13 @@
 <?php 
 
-function createPost($id_user, $post_title, $post_content) {
+function createPost($id_user, $post_img, $post_title, $post_content) {
     global $pdo;
       try {
-        $query= $pdo->prepare("INSERT INTO posts ( id_user, title, text, date) VALUES ( :i, :t, :c,:d)");
+        $query= $pdo->prepare("INSERT INTO posts ( id_user, img, title, text, date) VALUES ( :i, :p, :t, :c,:d)");
           
         $query->execute([
         'i' => $id_user,
+        'p' => $post_img,
         't' => $post_title, 
         'c' => $post_content,
         'd' => date("Y-m-d H:i:s")
