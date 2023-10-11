@@ -4,13 +4,13 @@ $title="Modifier mon profil";
     global $isConnected;
     global $base_url;
         ob_start();
-?>
+    
+    if($isConnected) {?>
     <h1><?= $title?></h1>
     <div class="container container_form px-4">
        
       <p class="profile_name">
-        <?php  
-        if($isConnected) {?>
+
             <form method="POST">
                 <div class="mb-4">
                     <input type="radio" name="gender" value="Monsieur" required/>
@@ -32,14 +32,18 @@ $title="Modifier mon profil";
                     <button type="submit" class="w-100 btn btn-primary">VALIDER</button>
                 </div>
             </form>
-        <?php };?>
+       
       </p>
        
     </div>
 
-<?php 
-
+<?php   
     $content = ob_get_clean();
     require("templates/layout.php");
+    } 
+        else {
+            showLogin();
+        };
+
 };?>
 

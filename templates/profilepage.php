@@ -1,7 +1,6 @@
 <?php
 function showProfilePage() {
 $title="Profile";
-    global $isConnected;
     global $base_url;
         ob_start();
 ?>

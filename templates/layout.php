@@ -32,7 +32,7 @@ global $isConnected;
                     <p>Bonjour, <?= $gender . ' '. $username?></p>
                     <a href='<?= $base_url ?>?page=logout' class="logout"><i class="fas fa-sign-out-alt"></i></a>
                     <a href='<?= $base_url ?>?page=profile' class="profile"><i class="fas fa-user"></i></a>
-                <?php } else {?>
+                <?php } elseif($title !== 'connexion' && $title !== 'inscription') {?>
                     <a href="<?=$base_url?>?page=login" class="account"><i class="fas fa-sign-in-alt"></i> Se connecter</a>
                             
                 <?php };?>
