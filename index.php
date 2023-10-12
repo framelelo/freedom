@@ -23,15 +23,18 @@ if (isset($_GET["page"])) {
                     echo "Erreur 404 - Action inconnue";
                 }
             break;
-            case "comment":
+        case "comment":
                
-                $action = $_GET["a"];
-                if ($action == "create") {
-                    $id_status = $_GET["id_status"];
-                    createCommentAction($id_status);
-                } else {
-                    echo "Erreur 404 - Action inconnue";
-                }
+            $action = $_GET["a"];
+            if ($action == "create") {
+                $id_status = $_GET["id_status"];
+                createCommentAction($id_status);
+            } else {
+                echo "Erreur 404 - Action inconnue";
+            }
+            break;
+     case 'friends':
+                Displayfriends();
                 break;
         case 'profile':
             showProfilePage();

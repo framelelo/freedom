@@ -1,0 +1,17 @@
+.form_publish  {
+    border-radius: 10px;
+    text-align: center;
+    > .form-group > label {
+        font-size: 18px;
+        padding-bottom: 5px;
+        color: blueviolet;
+    }
+}
+
+.bg-color {
+    background-color: #efefef;
+}
+
+textarea {
+    width: 100%;
+}

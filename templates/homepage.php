@@ -9,14 +9,7 @@ $title="accueil";
 
   <!-- SHOW POSTS -->
         <?php if ($isConnected){?>
-            <form method="POST" action="<?php $base_url?>?page=publish&a=create">
-                <div class="form-group mb-3">           
-                    <div class="custom-file">
-                        <label class="label" for="post_picture">Ajouter une photo</label>
-                        <br>
-                        <input type="file" class="upload_picture" name="post_img" id="post_picture" accept=".png,.jpg,.jpeg,.webp">
-                    </div>
-                </div>
+            <form method="POST" action="<?php $base_url?>?page=publish&a=create" class="form_publish bg-color mb-5 p-3">
                 <div class="form-group mb-3">
                     <label class='label' for="post_title">Titre</label>
                     <input type="text" class="form-control" name="post_title" placeholder="Titre" required>
@@ -26,24 +19,30 @@ $title="accueil";
                     <label class='label' for="article">Votre article</label>
                     <textarea class="form-control" name="post_content" rows="5" required></textarea>
                 </div>
-                <div class="right my-5">
+                <div class="right mt-3">
                     <button type="submit" class="btn btn-primary">PUBLIER</button>
                 </div>
             </form>  
             
             <!-- SHOW COMMENTS -->
         <?php };
-        foreach($posts as $post){ 
-            echo getUsername($post['id_user']) . "<br>"; 
-            echo $post['title'] . "<br>"; 
-            echo $post['img'] . "<br>"; 
-            echo $post['text'] . "<br>"; 
-            echo $post['date'];
-       
-       if ($isConnected) { ?>
-            <form method="post" action="<?php $base_url?>?page=comment&a=create&id_status=<?= $post["id"] ?>">
-                <textarea name="content" placeholder="Commenter ..." cols="30" rows="1"></textarea>
-                <input type="submit" value="Commenter">
+        foreach($posts as $post){ ?>
+                    <div class="card p-3 mb-4 text-center">
+                        <div class="card-body">
+                            <h2 class="card-title"><?= $post['title'] ?></h2>
+                            <p class="card-text"><?= $post['text'] ?></p>
+                            <p class="card-text"><span><?=getUsername($post['id_user'])?></span><?= $post['date'] ?></p> 
+                        </div>
+                        <div class="card-footer">
+                   
+                
+                
+                <?php if ($isConnected) { ?>
+            <form class="pt-4" method="post" action="<?php $base_url?>?page=comment&a=create&id_status=<?= $post["id"] ?>">
+                <textarea name="content" placeholder="Commenter ..." cols="30" rows="2"></textarea>
+                <div class="right my-2">
+                    <button type="submit" class="btn btn-primary w-100">Commenter</button>
+                </div>
             </form>
 
         <?php }
@@ -52,7 +51,7 @@ $title="accueil";
         foreach ($comments as $comment) { ?>
             <p><?= $comment["text"] ?> - <?=getUsername($comment['id_user']) ?>
             </p>
-    <?php }
+    <?php } echo '</div> </div>';
     } ?>
     </div>
 
