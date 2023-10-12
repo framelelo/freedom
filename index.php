@@ -16,12 +16,12 @@ if (isset($_GET["page"])) {
                 echo "Erreur 404 - Action inconnue";
                 break;
             }
-                $action = $_GET["a"];
-                if ($action == "create") {
-                    CreatePostAction($id_post);
-                } else {
-                    echo "Erreur 404 - Action inconnue";
-                }
+            $action = $_GET["a"];
+            if ($action == "create") {
+                CreatePostAction();
+            } else {
+                echo "Erreur 404 - Action inconnue";
+            }
             break;
         case "comment":
                
@@ -33,10 +33,7 @@ if (isset($_GET["page"])) {
                 echo "Erreur 404 - Action inconnue";
             }
             break;
-     case 'friends':
-                Displayfriends();
-                break;
-        case 'profile':
+             case 'profile':
             showProfilePage();
             break;
             case 'update':

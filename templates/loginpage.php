@@ -4,7 +4,7 @@
         global $base_url;  
         ob_start(); ?> 
 
-<div class="container_form px-4 py-5">
+<div class="px-4 py-5">
     <h1 class="title mb-4"><?= $title?></h1>
     <form method="POST">
         <div class="mb-4">

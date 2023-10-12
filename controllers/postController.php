@@ -8,6 +8,7 @@ function CreatePostAction() {
         if ($_POST['post_content']) {                         
             $post = createPost( $_SESSION['users']['id'], $_POST['post_img'], $_POST['post_title'], $_POST['post_content']);
             if($post){
+
                 header("location: $base_url");
             }
             else {

@@ -10,6 +10,9 @@
     --light_color: rgb(255,255,255);
 }
 
+h1 {
+    color: var(--primary_color);
+}
 i {
     padding: 4px;
     font-size: 30px;
@@ -65,7 +68,10 @@ textarea {
     border-radius: 5px;
 }
 
-
+#page_accueil > div {
+    max-width: 700px;
+    margin: auto;
+}
 
 .posts {
     .card-top {
@@ -84,4 +90,16 @@ textarea {
         }
     }
     
+}
+
+.container_form {
+    display: flex;
+    height: calc(100vh - 111px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .card {
+        width: 100%;
+        max-width: 600px;
+    }
 }

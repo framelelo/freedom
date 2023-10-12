@@ -4,13 +4,17 @@ $title="accueil";
         global $isConnected;
         ob_start();
 ?>
-    <div class="container container_form px-4">
+    <div class="container px-4">
 
   <!-- SHOW POSTS -->
         <?php if ($isConnected){?>
+
             <form method="POST" action="<?php $base_url?>?page=publish&a=create" class="form_publish bg-color mb-5 p-3">
+
+            
                 <div class="form-group mb-3">
                     <label class='label' for="post_title">Titre</label>
+                    <input type="file" class="form-control" name="post_img">
                     <input type="text" class="form-control" name="post_title" placeholder="Titre" required>
                 </div>
         
@@ -35,11 +39,9 @@ $title="accueil";
                             <h2 class="card-title"><?= $post['title'] ?></h2>
                             <p class="card-text"><?= $post['text'] ?></p>
                         </div>
-                        <div class="card-footer">
-                   
-                
-                
+                 
                 <?php if ($isConnected) { ?>
+                        <div class="card-footer">
             <form class="pt-4" method="post" action="<?php $base_url?>?page=comment&a=create&id_status=<?= $post["id"] ?>">
                 <textarea name="content" placeholder="Commenter ..." cols="30" rows="2"></textarea>
                 <div class="right my-2">

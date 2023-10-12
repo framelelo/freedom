@@ -4,9 +4,12 @@ $title="Profile";
     global $base_url;
         ob_start();
 ?>
-    <h1><?= $title?></h1>
+    
     <div class="container container_form px-4">
        
+<div class="card p-4">
+  
+      <h1 class='text-center'><?= $title?></h1>
       <p class="profile_name">
         <?php  
             $gender = $_SESSION["users"]["gender"];
@@ -14,13 +17,14 @@ $title="Profile";
             $email= $_SESSION["users"]["email"];
             $password = $_SESSION["users"]["password"];
             
-            echo 'Civilité : '. $gender . '<br>';
-            echo 'Pseudo : '. $username . '<br>';
-            echo 'Email : '. $email . '<br>';
-            echo 'Mot de passe : Mot de passe <br>';
+            echo '<p>Civilité : '. $gender . '</p>';
+            echo '<p>Pseudo : '. $username . '</p>';
+            echo '<p>Email : '. $email . '</p>';
+            echo '<p>Mot de passe : Mot de passe </p>';
         ?>
-        <a href='<?=  $base_url?>?page=update'>Modifier</a>
+        <a class='btn btn-primary my-3' href='<?= $base_url?>?page=update'>Modifier</a>
       </p>
+</div>
        
     </div>
 

@@ -39,6 +39,7 @@ function register ($gender,$username, $email, $password) {
         
         ]);
             return true;
+           
 }
     catch (PDOEXCEPTION $e) {
         return false;
