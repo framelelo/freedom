@@ -39,7 +39,7 @@ $title="Modifier mon profil";
 
 <?php   
     $content = ob_get_clean();
-    require("templates/layout.php");
+    require("layout.php");
     } 
         else {
             showLogin();

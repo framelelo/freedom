@@ -1,36 +1,30 @@
 <?php
-function createComment($id_user, $id_post, $content)
+function getAllCommentsById($id_post)
 {
-    global  $pdo;
-    try {
-        $query = $pdo ->prepare("INSERT INTO comments (id_user, id_post, text, date) VALUES (:i, :p, :c, :d)");
-        $query->execute([
-            "i" => $id_user,
-            "p" => $id_post,
-            "c" => $content,
-            'd' => date("Y-m-d H:i:s")
-        ]);
-        return true;
-    }
-    catch (PDOEXCEPTION $e) {
-        echo $e = get_message();
-        return false;
-    }
-    return false;
+    global $pdo;
+    $query = $pdo->prepare("SELECT * FROM comments where id_post = :id ORDER BY date DESC");
+    $query->execute([
+        "id" => $id_post
+    ]);
+    $comments = $query->fetchAll();
+    return $comments;
 }
 
-function getComments($id_post)
+function createComment($id_user, $id_post, $content)
 {
     global $pdo;
     try {
-        $query = $pdo ->prepare("SELECT * FROM comment WHERE id_post = :i ORDER BY id DESC");
+        $query = $pdo->prepare("INSERT INTO comments (id_user,id_post, text, date) VALUES (:u,:p, :t, :d)");
         $query->execute([
-            "i" => $id_post
+            "u" => $id_user,
+            "p" => $id_post,
+            "t" => $content,
+            "d" => date("Y-m-d H:i:s")
         ]);
-        $comment = $query->fetchAll();
-        return $comment;
-    }
-    catch (PDOEXCEPTION $e) {
+        return true;
+    } catch (PDOException $e) {
+        echo $e->getMessage();
         return false;
     }
 }
+

@@ -19,8 +19,10 @@ require_once("templates/profilepage.php");
 require_once("templates/updatepage.php");
 
 require_once("controllers/authController.php");
+require_once("controllers/homeController.php");
 require_once("controllers/postController.php");
 require_once("controllers/updateController.php");
+require_once("controllers/commentController.php");
 
 
 ?>

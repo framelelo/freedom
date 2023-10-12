@@ -12,8 +12,27 @@ if (isset($_GET["page"])) {
             Subscription();
             break;
         case 'publish':
-            showCreatePost();
+            if (!isset($_GET["a"])) {
+                echo "Erreur 404 - Action inconnue";
+                break;
+            }
+                $action = $_GET["a"];
+                if ($action == "create") {
+                    CreatePostAction($id_post);
+                } else {
+                    echo "Erreur 404 - Action inconnue";
+                }
             break;
+            case "comment":
+               
+                $action = $_GET["a"];
+                if ($action == "create") {
+                    $id_status = $_GET["id_status"];
+                    createCommentAction($id_status);
+                } else {
+                    echo "Erreur 404 - Action inconnue";
+                }
+                break;
         case 'profile':
             showProfilePage();
             break;
@@ -24,10 +43,12 @@ if (isset($_GET["page"])) {
             logOut();
             break;
         default:
-            showHomePage();
+        echo homeAction();
             break;
     }
 } else {
-    showHomePage();
+    homeAction();
 }
 ?>
+
+
