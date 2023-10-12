@@ -35,19 +35,19 @@ $title="accueil";
                             <span class='img'><img src=''></span>
                             <p class="card-text username"><span><?=getUsername($post['id_user'])?></span></p> 
                         </div>
-                            <div class="card-body text-center">
+                        <div class="card-body text-center">
                             <h2 class="card-title"><?= $post['title'] ?></h2>
                             <p class="card-text"><?= $post['text'] ?></p>
                         </div>
                  
                 <?php if ($isConnected) { ?>
-                        <div class="card-footer">
-            <form class="pt-4" method="post" action="<?php $base_url?>?page=comment&a=create&id_status=<?= $post["id"] ?>">
-                <textarea name="content" placeholder="Commenter ..." cols="30" rows="2"></textarea>
-                <div class="right my-2">
-                    <button type="submit" class="btn btn-primary w-100">VALIDER</button>
-                </div>
-            </form>
+                    <div class="card-footer">
+                        <form class="pt-4" method="post" action="<?php $base_url?>?page=comment&a=create&id_status=<?= $post["id"] ?>">
+                        <textarea name="content" placeholder="Commenter ..." cols="30" rows="2"></textarea>
+                        <div class="right my-2">
+                            <button type="submit" class="btn btn-primary w-100">VALIDER</button>
+                        </div>
+                    </form>
 
         <?php }
         
@@ -56,7 +56,7 @@ $title="accueil";
            
             <p><?= $comment["text"] ?>  <?=getUsername($comment['id_user']) ?>
             </p>
-    <?php } echo '</div> </div>';
+    <?php } echo '</div> ';
     } ?>
     </div>
 
