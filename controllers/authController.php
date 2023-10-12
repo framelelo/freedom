@@ -3,18 +3,23 @@ function showLogin(){
    
     global $base_url;
 
-    if ($_POST && $_POST['username'] && $_POST['password']) {                
-            
-            $connexion = login($_POST['username'], $_POST['password']);
-            
-            if ($connexion){
-                header("location: $base_url");
-}
-            else {
-                echo '<p class="message px-2">Merci de vérifier !</p>';  
-            } 
-        };   
-        showLoginPage();
+    global $base_url;
+    global $isConnected;
+    
+    if ($isConnected) {
+        header("Location: $base_url");
+    }
+    if (isset($_POST["username"]) && isset($_POST["password"])) {
+        $user = $_POST["username"]; 
+        $password = $_POST["password"];
+
+        $verif = login($user, $password);
+        if ($verif) {
+            header("Location: $base_url");
+        } else {
+            echo "Merci de vérifier !";
+        }
+    } showLoginPage();
 };
 
 function Subscription(){
@@ -42,3 +47,6 @@ function logOut(){
         header("location: $base_url");
     };
 ?>
+<?php
+
+   

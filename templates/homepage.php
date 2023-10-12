@@ -34,24 +34,23 @@ $title="accueil";
             <!-- SHOW COMMENTS -->
         <?php };
         foreach($posts as $post){ 
-            echo $post['id'] . "<br>"; 
+            echo getUsername($post['id_user']) . "<br>"; 
             echo $post['title'] . "<br>"; 
             echo $post['img'] . "<br>"; 
             echo $post['text'] . "<br>"; 
             echo $post['date'];
-            
-        // Si l'utilisateur est connecté, on affiche le formulaire de commentaire
-        if ($isConnected) { ?>
+       
+       if ($isConnected) { ?>
             <form method="post" action="<?php $base_url?>?page=comment&a=create&id_status=<?= $post["id"] ?>">
                 <textarea name="content" placeholder="Commenter ..." cols="30" rows="1"></textarea>
                 <input type="submit" value="Commenter">
             </form>
 
         <?php }
-        // On récupère tous les commentaires du statut
+        
         $comments = getAllCommentsById($post["id"]);
-        foreach ($comments as $c) { ?>
-            <p><?= $c["text"] ?> 
+        foreach ($comments as $comment) { ?>
+            <p><?= $comment["text"] ?> - <?=getUsername($comment['id_user']) ?>
             </p>
     <?php }
     } ?>

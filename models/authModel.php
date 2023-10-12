@@ -8,14 +8,18 @@ function login($username, $password) {
         $query->execute(['u' => $username]);
     
         $user = $query->fetch();
-    
-        if($user && password_verify($password, $user['password'])) {
+        if (!$user) {
+            return false;
+        }
 
-            $_SESSION["users"] = $user;
-            return true;
-}
+        if (!password_verify($password, $user["password"])) {
+            return false;
+        }
 
-    } catch (PDOEXCEPTION $e) {
+        $_SESSION["users"] = $user;
+        
+        return true;
+    }  catch (PDOEXCEPTION $e) {
             return false;
         }
         return false;
@@ -39,4 +43,17 @@ function register ($gender,$username, $email, $password) {
     catch (PDOEXCEPTION $e) {
         return false;
 }
-}?>
+}
+
+function getUsername($id)
+{
+    global $pdo;
+    $query = $pdo->prepare("SELECT username FROM users WHERE id = :id");
+    $query->execute([
+        "id" => $id
+    ]);
+    $user = $query->fetch();
+    return $user["username"];
+}
+
+?>
