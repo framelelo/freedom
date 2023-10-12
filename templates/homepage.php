@@ -4,7 +4,6 @@ $title="accueil";
         global $isConnected;
         ob_start();
 ?>
-    <h1><?= $title?></h1>
     <div class="container container_form px-4">
 
   <!-- SHOW POSTS -->
@@ -27,11 +26,14 @@ $title="accueil";
             <!-- SHOW COMMENTS -->
         <?php };
         foreach($posts as $post){ ?>
-                    <div class="card p-3 mb-4 text-center">
-                        <div class="card-body">
+                    <div class="card posts p-3 mb-4">
+                        <div class="card-top">
+                            <span class='img'><img src=''></span>
+                            <p class="card-text username"><span><?=getUsername($post['id_user'])?></span></p> 
+                        </div>
+                            <div class="card-body text-center">
                             <h2 class="card-title"><?= $post['title'] ?></h2>
                             <p class="card-text"><?= $post['text'] ?></p>
-                            <p class="card-text"><span><?=getUsername($post['id_user'])?></span><?= $post['date'] ?></p> 
                         </div>
                         <div class="card-footer">
                    
@@ -41,7 +43,7 @@ $title="accueil";
             <form class="pt-4" method="post" action="<?php $base_url?>?page=comment&a=create&id_status=<?= $post["id"] ?>">
                 <textarea name="content" placeholder="Commenter ..." cols="30" rows="2"></textarea>
                 <div class="right my-2">
-                    <button type="submit" class="btn btn-primary w-100">Commenter</button>
+                    <button type="submit" class="btn btn-primary w-100">VALIDER</button>
                 </div>
             </form>
 
@@ -49,7 +51,8 @@ $title="accueil";
         
         $comments = getAllCommentsById($post["id"]);
         foreach ($comments as $comment) { ?>
-            <p><?= $comment["text"] ?> - <?=getUsername($comment['id_user']) ?>
+           
+            <p><?= $comment["text"] ?>  <?=getUsername($comment['id_user']) ?>
             </p>
     <?php } echo '</div> </div>';
     } ?>
