@@ -12,6 +12,7 @@
 
 h1 {
     color: var(--primary_color);
+    text-transform: capitalize;
 }
 i {
     padding: 4px;
@@ -91,7 +92,7 @@ textarea {
     
 }
 
-.container_form {
+#page_profile .container {
     display: flex;
     height: calc(100vh - 111px);
     flex-direction: column;
@@ -101,4 +102,8 @@ textarea {
         width: 100%;
         max-width: 600px;
     }
+}
+
+#page_profile .container {
+    display: flex;
 }

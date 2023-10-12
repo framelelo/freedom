@@ -1,11 +1,11 @@
 <?php
 function showProfilePage() {
-$title="Profile";
+$title="profile";
     global $base_url;
         ob_start();
 ?>
     
-    <div class="container container_form px-4">
+    <div class="container px-4">
        
 <div class="card p-4">
   
