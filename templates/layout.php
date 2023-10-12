@@ -23,8 +23,8 @@ global $isConnected;
     </head>
 
     <body>
-        <div class="main-container container" id="page_<?= $title?>">
-            <header class='py-4 mb-4'>
+        <div class="main-container" id="page_<?= $title?>">
+            <header class='p-4 mb-4'>
                 <?php if ($isConnected){
                     $gender = $_SESSION["users"]["gender"];
                     $username = $_SESSION["users"]["username"];
