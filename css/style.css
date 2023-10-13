@@ -92,7 +92,7 @@ textarea {
     
 }
 
-#page_profile .container {
+#page_profil .container {
     display: flex;
     height: calc(100vh - 111px);
     flex-direction: column;
@@ -104,6 +104,8 @@ textarea {
     }
 }
 
-#page_profile .container {
+#page_amis .container .row {
+    align-items: center;
+    justify-content: space-evenly;
     display: flex;
 }

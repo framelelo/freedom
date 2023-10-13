@@ -1,6 +1,6 @@
 <?php
 function showProfilePage() {
-$title="profile";
+$title="profil";
     global $base_url;
         ob_start();
 ?>
