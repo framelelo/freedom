@@ -24,19 +24,41 @@ function showLogin(){
 
 function Subscription(){
     global $base_url;
-    if ($_POST && $_POST['gender'] &&  $_POST['username'] && $_POST['email'] && $_POST['password']) {
-        if ($_POST['password'] === $_POST['confirmation_password']) {
 
-        $connexion = register($_POST['gender'], $_POST['username'],$_POST['email'], $_POST['password']);
+    if ($_POST){
+        $gender = $_POST['gender']; 
+         $username = $_POST['username']; 
+          $email  = $_POST['email']; 
+           $password = $_POST['password']; 
+           $confirmed_password = $_POST['confirmation_password']; 
+          
+            $image_name = null; 
+        
+            if (!empty($_FILES['profile_img']['name'])) {
+                $image_name = time() . '_' . $_FILES['profile_img']['name'];
+        
+                $temp_folder = $_FILES['profile_img']['tmp_name'];
+                $upload_folder = ROOT_PATH . "/uploads/" . $image_name;
+                
+                $result = move_uploaded_file($temp_folder, $upload_folder);
+                if (!$result) {
+                    echo "Merci de vérifier.";
+                }
+            }
+            if ($gender && $image_name && $username && $email && $password) {
+              
+                if ($password === $confirmed_password) {
 
-        if ($connexion) header("location:$base_url?page=login");
-            else echo '<p class="message px-2">Merci de vérifier !</p>';
-                } else {
-        echo '<p class="message px-2">Les mots de passe ne correspondent pas.</p>';
-    }
-}
-
-    showRegisterPage();
+                    $connexion = register($gender, $image_name, $username, $email, $password);
+                        
+                    if ($connexion) header("location:$base_url?page=login");
+                            else echo '<p class="message px-2">Merci de vérifier !</p>';
+                        } else {
+                            echo '<p class="message px-2">Les mots de passe ne correspondent pas.</p>';
+            }  
+    } 
+};showRegisterPage();
+   
 
 };
     

@@ -37,7 +37,8 @@ header {
     text-align: right;
     border-bottom: 1px solid #606060;
 
-    .username {color: var(--primary_color);
+    .username {
+        color: var(--primary_color);
         text-decoration: none;
         margin-top: 5px;
         text-transform: capitalize;
@@ -80,13 +81,13 @@ textarea {
         display: flex;
         align-items: center;
         .img {
+            overflow: hidden;
             background-color: #fff;
             border-radius: 100%;
             border: 1px solid var( --primary_color);
             width: 70px;
             height:70px;
-            margin: 5px 10px;
-            
+            margin: 5px 10px;            
         }
     }
     

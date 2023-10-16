@@ -25,13 +25,14 @@ function login($username, $password) {
         return false;
 }
 
-function register ($gender,$username, $email, $password) {
+function register ($gender,$image_name, $username, $email, $password) {
     global $pdo;
 
     try {
-        $query = $pdo->prepare("INSERT INTO users (gender, username, email, password, date) VALUES (:g, :u,:e,:p,:d)");
+        $query = $pdo->prepare("INSERT INTO users (gender, img, username, email, password, date) VALUES (:g,:i,:u,:e,:p,:d)");
         $query->execute([
             'g' => $gender,
+            'i' => $image_name,
             'u' => $username,
             'e' => $email,
             'p' => password_hash($password, PASSWORD_DEFAULT),
@@ -55,6 +56,17 @@ function getUsername($id)
     ]);
     $user = $query->fetch();
     return $user["username"];
+}
+
+function getUserImage($id)
+{
+    global $pdo;
+    $query = $pdo->prepare("SELECT img FROM users WHERE id = :id");
+    $query->execute([
+        "id" => $id
+    ]);
+    $user = $query->fetch();
+    return $user["img"];
 }
 
 ?>

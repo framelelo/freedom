@@ -31,9 +31,12 @@ $title="accueil";
             <!-- SHOW COMMENTS -->
         <?php };
         foreach($posts as $post){ ?>
+        
                     <div class="card posts p-3 mb-4">
                         <div class="card-top">
-                            <span class='img'><img class='w-100' src='<?= ROOT_PATH ."/uploads/".$post['img']?>'></span>
+                            <span class='img'>
+                                <img class='w-100' src='uploads/<?=getUserImage($post['id_user'])?>' alt='<?= getUserImage($post['id_user'])?>'>
+                            </span>
                             <p class="card-text username"><span><?=getUsername($post['id_user'])?></span></p> 
                         </div>
                         <div class="card-body text-center">
