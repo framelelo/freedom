@@ -15,7 +15,7 @@ $title="accueil";
 
                 <div class="form-group mb-3">
                     <label class='label' for="post_title">Titre</label>
-                    <input type="file" class="form-control" name="post_img">
+                    <input type="file" class="form-control" name="post_img" accept= '.jpeg,.png,.jpg'>
                     <input type="text" class="form-control" name="post_title" placeholder="Titre" required>
                 </div>
         
@@ -33,12 +33,14 @@ $title="accueil";
         foreach($posts as $post){ ?>
                     <div class="card posts p-3 mb-4">
                         <div class="card-top">
-                            <span class='img'><img src=''></span>
+                            <span class='img'><img class='w-100' src='<?= ROOT_PATH ."/uploads/".$post['img']?>'></span>
                             <p class="card-text username"><span><?=getUsername($post['id_user'])?></span></p> 
                         </div>
                         <div class="card-body text-center">
                        
-                        <span class='img'><img src=''></span>
+                        <p class='img mb-4'>
+                            <img src="uploads/<?= $post['img'] ?>" alt="<?= $post['title']?>" class='w-100'>
+                        </p>
                             <h2 class="card-title"><?= $post['title'] ?></h2>
                             <p class="card-text"><?= $post['text'] ?></p>
                         </div>
