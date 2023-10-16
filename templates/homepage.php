@@ -28,24 +28,40 @@ $title="accueil";
                 </div>
             </form>  
             
-            <!-- SHOW COMMENTS -->
+            <!-- SHOW POSTS -->
         <?php };
         foreach($posts as $post){ ?>
         
                     <div class="card posts p-3 mb-4">
-                        <div class="card-top">
+                        <div class="card-top mb-3">
                             <span class='img'>
                                 <img class='w-100' src='uploads/<?=getUserImage($post['id_user'])?>' alt='<?= getUserImage($post['id_user'])?>'>
                             </span>
                             <p class="card-text username"><span><?=getUsername($post['id_user'])?></span></p> 
                         </div>
-                        <div class="card-body text-center">
-                       
-                        <p class='img mb-4'>
+
+                        <p class='img_post mb-4'>
                             <img src="uploads/<?= $post['img'] ?>" alt="<?= $post['title']?>" class='w-100'>
                         </p>
-                            <h2 class="card-title"><?= $post['title'] ?></h2>
-                            <p class="card-text"><?= $post['text'] ?></p>
+                        <div class="card-body flex">
+                            <div class="text_part">
+                                <h2><?= $post['title'] ?></h2>
+                                <p class="card-text"><?= $post['text'] ?></p>
+                            </div>
+                            <div class="likes">
+                                <?php if ($isConnected) { 
+                                    if (isLiked($_SESSION["users"]["id"], $post["id"])) {
+                                        $action = "delete";
+                                        $value = '<i class="fas fa-thumbs-down"></i>';
+                                    } else {
+                                        $action = "create";
+                                        $value = '<i class="fas fa-thumbs-up"></i>';
+                                    }
+                                ?>
+                                <a href="?page=likes&a=<?= $action ?>&id_post=<?= $post["id"] ?> "> <?= $value ?></a>
+                                <?php };?>
+
+                            </div>
                         </div>
                  
                 <?php if ($isConnected) { ?>
@@ -56,20 +72,10 @@ $title="accueil";
                                 <button type="submit" class="btn btn-primary w-100">VALIDER</button>
                             </div>
                             
-                            <?php if ($isConnected) { 
-                                if (isLiked($_SESSION["users"]["id"], $post["id"])) {
-                                    $action = "delete";
-                                    $value = '<i class="fas fa-thumbs-down"></i>';
-                                } else {
-                                    $action = "create";
-                                    $value = '<i class="fas fa-thumbs-up"></i>';
-                                }
-                            ?>
-                        <a href="?page=likes&a=<?= $action ?>&id_post=<?= $post["id"] ?> "> <?= $value ?></a>
-                </div>
+                    </div>
             </form>
 
-        <?php };};
+        <?php };
         
         $comments = getAllCommentsById($post["id"]);
         foreach ($comments as $comment) { ?>

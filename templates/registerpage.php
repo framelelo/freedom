@@ -7,12 +7,15 @@ function showRegisterPage() {
 
 <div class=" px-4 py-5">
     <h1 class="title mb-4">S'inscrire</h1>
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
         <div class="mb-4">
             <input type="radio" name="gender" value="Monsieur" required/>
             <label>M</label>
             <input type="radio" name="gender" value="Madame"/>
             <label>F</label>
+        </div>
+        <div class="mb-4">
+            <input type="file" name="profile_img" class="form-control px-2" id="profile_img">
         </div>
         <div class="mb-4">
             <input type="text" name="username" class="form-control px-2" id="login_id" placeholder="Identifiant" required>
