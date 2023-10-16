@@ -8,6 +8,7 @@
     --bgcolor :rgb(66, 66, 66);
     --primary_color : rgb(181, 123, 15);
     --light_color: rgb(255,255,255);
+    --dark_color: rgb(0,0,0);
 }
 
 h1, h2 {
@@ -39,7 +40,7 @@ header {
     color: white;
     text-align: right;
     border-bottom: 1px solid #606060;
-
+    
     .username {
         color: var(--primary_color);
         text-decoration: none;
@@ -47,6 +48,11 @@ header {
         text-transform: capitalize;
         &:hover {
             text-decoration: underline;
+        }
+    }
+    .fas{
+        &:hover {
+            color: var(--dark_color);
         }
     }
 }
