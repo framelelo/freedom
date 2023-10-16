@@ -11,20 +11,22 @@ if (isset($_GET["page"])) {
         case 'register':
             Subscription();
             break;
-        case 'publish':
-            if (!isset($_GET["a"])) {
-                echo "Erreur 404 - Action inconnue";
+            case 'likes':
+                likeAction();
                 break;
-            }
+            case 'publish':
+                if (!isset($_GET["a"])) {
+                    echo "Erreur 404 - Action inconnue";
+                    break;
+                }
             $action = $_GET["a"];
-            if ($action == "create") {
-                CreatePostAction();
-            } else {
-                echo "Erreur 404 - Action inconnue";
-            }
+                if ($action == "create") {
+                    CreatePostAction();
+                } else {
+                    echo "Erreur 404 - Action inconnue";
+                }
             break;
         case "comment":
-               
             $action = $_GET["a"];
             if ($action == "create") {
                 $id_status = $_GET["id_status"];
@@ -36,6 +38,9 @@ if (isset($_GET["page"])) {
              case 'profile':
             showProfilePage();
             break;
+            case 'friends':
+                Displayfriends();
+                break;
             case 'update':
                 UpdateAction();
                 break;
@@ -43,7 +48,7 @@ if (isset($_GET["page"])) {
             logOut();
             break;
         default:
-        echo homeAction();
+            homeAction();
             break;
     }
 } else {

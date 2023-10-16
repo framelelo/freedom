@@ -35,6 +35,7 @@ global $isConnected;
                     <div>
                         <a href='<?= $base_url ?>?page=logout' class="logout"><i class="fas fa-sign-out-alt"></i></a>
                         <a href='<?= $base_url ?>?page=profile' class="profile"><i class="fas fa-user"></i></a>
+                        <a href='<?= $base_url ?>?page=friends' class="profile"><i class="fas fa-user-friends"></i></a>
                     </div>
                     <?php } elseif($title !== 'connexion' && $title !== 'inscription') {?>
                         <a href="<?=$base_url?>?page=login" class="account"><i class="fas fa-sign-in-alt"></i> Se connecter</a>
