@@ -2,16 +2,17 @@
 function showHomePage($posts) {
 $title="accueil";
         global $isConnected;
+        global $base_url;
         ob_start();
+
 ?>
     <div class="container px-4">
 
   <!-- SHOW POSTS -->
         <?php if ($isConnected){?>
 
-            <form method="POST" action="<?php $base_url?>?page=publish&a=create" class="form_publish bg-color mb-5 p-3">
+            <form method="POST" action="<?php $base_url?>?page=publish&a=create" class="form_publish bg-color mb-5 p-3" enctype="multipart/form-data">
 
-            
                 <div class="form-group mb-3">
                     <label class='label' for="post_title">Titre</label>
                     <input type="file" class="form-control" name="post_img">
@@ -36,6 +37,8 @@ $title="accueil";
                             <p class="card-text username"><span><?=getUsername($post['id_user'])?></span></p> 
                         </div>
                         <div class="card-body text-center">
+                       
+                        <span class='img'><img src=''></span>
                             <h2 class="card-title"><?= $post['title'] ?></h2>
                             <p class="card-text"><?= $post['text'] ?></p>
                         </div>
@@ -43,20 +46,32 @@ $title="accueil";
                 <?php if ($isConnected) { ?>
                     <div class="card-footer">
                         <form class="pt-4" method="post" action="<?php $base_url?>?page=comment&a=create&id_status=<?= $post["id"] ?>">
-                        <textarea name="content" placeholder="Commenter ..." cols="30" rows="2"></textarea>
-                        <div class="right my-2">
-                            <button type="submit" class="btn btn-primary w-100">VALIDER</button>
-                        </div>
-                    </form>
+                            <textarea name="content" placeholder="Commenter ..." cols="30" rows="2"></textarea>
+                            <div class="right my-2">
+                                <button type="submit" class="btn btn-primary w-100">VALIDER</button>
+                            </div>
+                            
+                            <?php if ($isConnected) { 
+                                if (isLiked($_SESSION["users"]["id"], $post["id"])) {
+                                    $action = "delete";
+                                    $value = '<i class="fas fa-thumbs-down"></i>';
+                                } else {
+                                    $action = "create";
+                                    $value = '<i class="fas fa-thumbs-up"></i>';
+                                }
+                            ?>
+                        <a href="?page=likes&a=<?= $action ?>&id_post=<?= $post["id"] ?> "> <?= $value ?></a>
+                </div>
+            </form>
 
-        <?php }
+        <?php };};
         
         $comments = getAllCommentsById($post["id"]);
         foreach ($comments as $comment) { ?>
            
             <p><?= $comment["text"] ?>  <?=getUsername($comment['id_user']) ?>
             </p>
-    <?php } echo '</div> ';
+    <?php } echo '</div>';
     } ?>
     </div>
 
