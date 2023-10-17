@@ -2,19 +2,20 @@
 
 function homeAction(){
         global $base_url;
+        global $isConnected;
         $posts = getPosts();
         
         showHomePage($posts);
 
         if(!$posts){?>
         <div class="text-center">
-                <h2>Rien pour le moment !</h2>
-
+                <h2>Rien pour le moment, Créez votre publication !</h2>
+                <?php if(!$isConnected){?>
                 <p>
-                        Créez votre publication : <a href='<?= $base_url ?>?page=login'>Se connecter</a>
+                      L'avanture commence par : <a href='<?= $base_url ?>?page=login'>Se connecter</a>
                 </p>
         </div>
               
-        <?php };
+        <?php }; };
 };
 ?>
