@@ -29,7 +29,7 @@ function register ($gender,$image_name, $username, $email, $password) {
     global $pdo;
 
     try {
-        $query = $pdo->prepare("INSERT INTO users (gender, img, username, email, password, date) VALUES (:g,:i,:u,:e,:p,:d)");
+        $query = $pdo->prepare("INSERT INTO users (gender, img, username, email, password, date) VALUES (:g,:i, :u,:e,:p,:d)");
         $query->execute([
             'g' => $gender,
             'i' => $image_name,
@@ -61,12 +61,19 @@ function getUsername($id)
 function getUserImage($id)
 {
     global $pdo;
-    $query = $pdo->prepare("SELECT img FROM users WHERE id = :id");
-    $query->execute([
-        "id" => $id
-    ]);
+     try {
+        $query = $pdo->prepare("SELECT img FROM users WHERE id = :id");
+        $query->execute([
+            "id" => $id
+        ]);
+    
     $user = $query->fetch();
     return $user["img"];
+ 
+    }  catch (PDOEXCEPTION $e) {
+            return false;
+        }
+        return false;
 }
 
 ?>

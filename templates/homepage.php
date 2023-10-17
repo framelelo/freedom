@@ -30,12 +30,14 @@ $title="accueil";
             
             <!-- SHOW POSTS -->
         <?php };
-        foreach($posts as $post){ ?>
+        foreach($posts as $post){ 
+            $imagePath = getUserImage($post['id_user']);
+                echo "Image Path: $imagePath";?>
         
                     <div class="card posts p-3 mb-4">
                         <div class="card-top mb-3">
                             <span class='img'>
-                                <img class='w-100' src='uploads/<?=getUserImage($post['id_user'])?>' alt='<?= getUserImage($post['id_user'])?>'>
+                                <img class='w-100' src='uploads/<?=getUserImage($post['id_user'])?>?<?= time() ?>' alt='<?= getUserImage($post['id_user'])?>'>
                             </span>
                             <p class="card-text username"><span><?=getUsername($post['id_user'])?></span></p> 
                         </div>

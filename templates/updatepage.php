@@ -11,12 +11,15 @@ $title="Modifier mon profil";
        
       <p class="profile_name">
 
-            <form method="POST">
+            <form method="POST" enctype="multipart/form-data">
                 <div class="mb-4">
                     <input type="radio" name="gender" value="Monsieur" required/>
                     <label>M</label>
                     <input type="radio" name="gender" value="Madame"/>
                     <label>F</label>
+                </div>
+                <div class="mb-4">
+                    <input type="file" name="profile_img" class="form-control px-2" id="profile_img">
                 </div>
                 <div class="mb-4">
                     <input type="text" name="username" class="form-control px-2" id="login_id" placeholder="Identifiant" required>

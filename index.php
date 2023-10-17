@@ -39,6 +39,7 @@ if (isset($_GET["page"])) {
             case 'profile':
                 showProfilePage();
             break;
+            
             case 'friends':
                 Displayfriends();
             break;
@@ -46,7 +47,7 @@ if (isset($_GET["page"])) {
             case 'managefriends':
                 ManageFriend();
             break;
-                
+
             case 'update':
                 UpdateAction();
                 break;
