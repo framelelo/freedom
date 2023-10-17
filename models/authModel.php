@@ -29,7 +29,7 @@ function register ($gender,$image_name, $username, $email, $password) {
     global $pdo;
 
     try {
-        $query = $pdo->prepare("INSERT INTO users (gender, img, username, email, password, date) VALUES (:g,:i, :u,:e,:p,:d)");
+        $query = $pdo->prepare("INSERT INTO users (gender, img, username, email, password, creation) VALUES (:g,:i, :u,:e,:p,:d)");
         $query->execute([
             'g' => $gender,
             'i' => $image_name,

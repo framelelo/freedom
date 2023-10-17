@@ -42,7 +42,7 @@ function Subscription(){
                 
                 $result = move_uploaded_file($temp_folder, $upload_folder);
                 if (!$result) {
-                    echo "Merci de vérifier.";
+                    echo "Merci de vérifier l'image.";
                 }
             }
             if ($gender && $image_name && $username && $email && $password) {
