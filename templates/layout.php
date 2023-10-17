@@ -27,9 +27,14 @@ global $isConnected;
             <header class='p-4 mb-4'>
                 <?php if ($isConnected){
                     $username = $_SESSION["users"]["username"];
+                    
+                    $img = $_SESSION["users"]["img"];
                     ?> 
-                    <a href='<?= $base_url ?>' class="username">
-                        Bonjour, <span><?= $username?></span>
+                    <a href='<?= $base_url ?>' class="username flex">
+                        <div class='img'>
+                            <img class='w-100' src='uploads/<?=$img?>?<?= time() ?>' alt='<?= getUserImage($post['id_user'])?>'>
+                        </div>
+                        Bonjour, <?= $username?>
                     </a>
                     <div>
                         <a href='<?= $base_url ?>?page=logout' class="logout"><i class="fas fa-sign-out-alt"></i></a>
