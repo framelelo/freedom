@@ -58,14 +58,14 @@ $title="accueil";
                                         $value = '<i class="fas fa-thumbs-up"></i>';
                                     }
                                 ?>
-                                <a href="?page=likes&a=<?= $action ?>&id_post=<?= $post["id"] ?> "> <?= $value ?></a>
+                                <a href="?page=likes&a=<?= $action ?>&id_post=<?= $post["id"] ?>"> <?= $value ?></a>
                                 <?php };?>
 
                             </div>
                         </div>
                  
                 <?php if ($isConnected) { ?>
-                    <div class="card-footer">
+                    <div class="card-footer mb-4">
                         <form class="pt-4" method="post" action="<?php $base_url?>?page=comment&a=create&id_status=<?= $post["id"] ?>">
                             <textarea name="content" placeholder="Commenter ..." cols="30" rows="2"></textarea>
                             <div class="right my-2">
@@ -80,8 +80,8 @@ $title="accueil";
         $comments = getAllCommentsById($post["id"]);
         foreach ($comments as $comment) { ?>
            
-            <p><?= $comment["text"] ?>  <?=getUsername($comment['id_user']) ?>
-            </p>
+            <div class="comments-part flex"><p><?= $comment["text"] ?></p>  <span><?=getUsername($comment['id_user']) ?></span>
+        </div>
     <?php } echo '</div>';
     } ?>
     </div>

@@ -43,6 +43,14 @@ global $isConnected;
             </header>
                 <?= $content?>
             </main>
+            <!-- FOOTER -->
+            <footer class="text-center text-lg-start position-sticky">
+                <!-- Copyright -->
+                <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                    ©  <?= date("Y");?> Copyright:
+                    <a class="text-light" href="<?= $base_url?>">freedom.com</a>
+                </div>
+            </footer>
         </div>
         
         <!-- BOOSTRAP -->
