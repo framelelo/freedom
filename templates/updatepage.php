@@ -19,7 +19,7 @@ $title="Modifier mon profil";
                     <label>F</label>
                 </div>
                 <div class="mb-4">
-                    <input type="file" name="profile_img" class="form-control px-2" id="profile_img">
+                    <input type="file" name="profile_img" class="form-control px-2" id="profile_img  accept= '.jpeg,.png,.jpg'">
                 </div>
                 <div class="mb-4">
                     <input type="text" name="username" class="form-control px-2" id="login_id" placeholder="Identifiant" required>
