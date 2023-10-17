@@ -30,9 +30,7 @@ $title="accueil";
             
             <!-- SHOW POSTS -->
         <?php };
-        foreach($posts as $post){ 
-            $imagePath = getUserImage($post['id_user']);
-                echo "Image Path: $imagePath";?>
+        foreach($posts as $post){?>
         
                     <div class="card posts p-3 mb-4">
                         <div class="card-top mb-3">
