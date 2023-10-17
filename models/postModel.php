@@ -37,7 +37,7 @@ function createPost($id_user, $image_name, $post_title, $post_content) {
 function getPost($id_post) { 
   global $pdo;
 try {
-  $query= $pdo->prepare("SELECT * FROM posts WHERE Id = :i ORDER BY creation DESC");
+  $query= $pdo->prepare("SELECT * FROM posts WHERE id = :i ORDER BY creation DESC");
   $query->execute([
     'i' => $id_post
 

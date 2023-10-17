@@ -120,9 +120,19 @@ textarea {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    .card {
+    > .card {
         width: 100%;
         max-width: 600px;
+
+        .profile  .img-profile {
+            overflow: hidden;
+            border-radius: 100%;
+            border: 1px solid var( --primary_color);
+            width: 200px;
+            height:200px;
+            margin: 5px 10px; 
+           
+        }
     }
 }
 
@@ -131,3 +141,4 @@ textarea {
     justify-content: space-evenly;
     display: flex;
 }
+
