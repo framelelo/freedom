@@ -1,11 +1,15 @@
 <?php
-function showFriend() 
+function showFriend($myid) 
 { 
     global $pdo;
     try {
-        $query = $pdo->prepare("SELECT * FROM friends");
+        $query = $pdo->prepare("SELECT u.* FROM `users` as u where u.id != :id 
+        AND u.id in (SELECT f.id_friend from friends as f where f.id_user = :id) 
+        OR u.id in (SELECT f.id_user from friends as f where f.id_friend = :id)");
+            
 
-         $query->execute([]);
+        $query->execute([
+            'id' => $myid,]);
         
         $friends = $query->fetchAll(PDO::FETCH_ASSOC);
             return $friends;
@@ -45,7 +49,7 @@ function showSuggestion($myid)
        
     global $pdo;
     try {
-        $query = $pdo->prepare("DELETE FROM friends WHERE id = :f");
+        $query = $pdo->prepare("DELETE FROM friends WHERE id_friend = :f OR id_user = :f");
         $query->execute([
             "f" => $id_friend,
         ]);
@@ -60,7 +64,7 @@ function addFriend($id_user, $id_friend)
     {
         global $pdo;
         try {
-            $query = $pdo->prepare("INSERT INTO friends (id_user,id_friend, date) VALUES (:u,:f, :d)");
+            $query = $pdo->prepare("INSERT INTO friends (id_user,id_friend, creation) VALUES (:u,:f, :d)");
             $query->execute([
                 "u" => $id_user,
                 "f" => $id_friend,

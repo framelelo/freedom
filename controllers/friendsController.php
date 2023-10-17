@@ -1,9 +1,9 @@
 <?php 
 function Displayfriends() {
 
-    $friends = showFriend();
-
     $myid = $_SESSION["users"]['id'];
+    $friends = showFriend($myid);
+
     $suggestions = showSuggestion($myid);
         
     showFriendPage($friends,$suggestions);
@@ -22,11 +22,11 @@ function ManageFriend() {
             addFriend($id_user, $id_friend);
         }
         if ($action == 'delete'){
-
             removeFriends($id_friend);
         }
-
-        Displayfriends();
+       
+        header("location: $base_url?page=friends");
+        
         
     } else echo 'erreur';
 }
