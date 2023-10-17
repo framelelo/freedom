@@ -2,7 +2,7 @@
 global $pdo;
 
 $host = 'localhost';
-$dbName = 'koze';
+$dbName = 'freedom';
 $username = 'root';
 $password = 'root';
 

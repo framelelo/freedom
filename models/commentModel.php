@@ -2,7 +2,7 @@
 function getAllCommentsById($id_post)
 {
     global $pdo;
-    $query = $pdo->prepare("SELECT * FROM comments where id_post = :id ORDER BY date DESC");
+    $query = $pdo->prepare("SELECT * FROM comments where id_post = :id ORDER BY creation DESC");
     $query->execute([
         "id" => $id_post
     ]);
@@ -14,7 +14,7 @@ function createComment($id_user, $id_post, $content)
 {
     global $pdo;
     try {
-        $query = $pdo->prepare("INSERT INTO comments (id_user,id_post, text, date) VALUES (:u,:p, :t, :d)");
+        $query = $pdo->prepare("INSERT INTO comments (id_user,id_post, text, creation) VALUES (:u,:p, :t, :d)");
         $query->execute([
             "u" => $id_user,
             "p" => $id_post,
