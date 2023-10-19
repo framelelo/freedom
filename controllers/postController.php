@@ -27,13 +27,7 @@ function CreatePostAction() {
                 }
             } else {
                 $default_image_path = $upload_folder; 
-                $image_name = 'dafault_post_img.png'; 
-                
-                if (copy($default_image_path, ROOT_PATH . "/uploads/" . $image_name)) {
-                    echo "Default image uploaded.";
-                } else {
-                    echo "Error uploading default image.";
-                }
+                $image_name = 'default_post_img.png'; 
             }
             
             $post = createPost($user_id, $image_name, $post_title, $post_content);
