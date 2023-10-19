@@ -23,6 +23,12 @@ i {
         color: #0099ff;
     }
 }
+img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
 .btn-primary {
     border-color: var( --primary_color);
     padding: 10px;
@@ -46,16 +52,26 @@ footer{
 header {
     display: flex;
     justify-content: space-between;
-    color: white;
-    text-align: right;
+    align-items: center;
     border-bottom: 1px solid #606060;
-    .img { overflow: hidden;
+    .logo {
+        max-width: 130px;
+        height: auto;
+        transition: all .5s linear;
+        &:hover {
+            transform: scale(.8);
+            
+        }
+    }
+    .img { 
+        display: block;
+        overflow: hidden;
         border-radius: 100%;
         border: 1px solid var( --primary_color);
-        width: 50px;
-        height:50px;
+        width: 80px;
+        height:80px;
         margin: 5px 10px;
-
+        
     }
     .username {
         color: var(--primary_color);
@@ -71,7 +87,33 @@ header {
             color: var(--dark_color);
         }
     }
-    
+    .dropdown-nav{
+        position: relative;
+        > .dropdown-list {
+            display: none;
+            position: absolute;
+            top: 85px;
+            right: 10px;
+            width: 200px;
+            background-color: var(--light_color);
+            border-radius: 5px;
+            border: 1px 1px 1px 1px solid var(--primary_color);
+            box-shadow: 1px 1px 1px 1px var(--primary_color);
+
+            > a {
+            display: block;
+            text-decoration: none;
+            padding: 4px 0;
+            color: var(--primary_color);
+                &:hover {
+                    color: var(--dark_color);
+                }
+            }
+        }
+       &:hover > .dropdown-list{
+        display: block;
+       }
+    }
 }
 
 .form_publish  {
@@ -139,12 +181,6 @@ textarea {
         border-radius: 10px;
         overflow: hidden;
         height: 300px;
-
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
     }
     
 }
@@ -171,6 +207,10 @@ textarea {
     }
 }
 
+#page_connexion .container, #page_inscription .container{
+    max-width: 760px;
+}
+
 #page_amis .container .row {
     align-items: center;
     justify-content: space-evenly;
@@ -181,11 +221,8 @@ textarea {
         height: 250px;
         overflow: hidden;
         margin-bottom: 15px;
-        > img {
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
-        }
     }
 }
+
+
 
