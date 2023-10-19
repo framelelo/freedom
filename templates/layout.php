@@ -24,30 +24,43 @@ global $isConnected;
 
     <body>
         <div class="main-container" id="page_<?= $title?>">
-            <header class='p-4 mb-4'>
+            <header class='px-4 py-2 mb-5'>
+                <a href='<?= $base_url ?>' class="username flex">
+                    <div class='logo'>
+                        <img class='w-100' src='uploads/freedom_logo.png'>
+                    </div>
+                </a>
                 <?php if ($isConnected){
                     $username = $_SESSION["users"]["username"];
                     
                     $img = $_SESSION["users"]["img"];
                     ?> 
-                    <a href='<?= $base_url ?>' class="username flex">
-                        <div class='img'>
+                    <div class="dropdown-nav">
+                        <a class="img dropdown-button" href="#" >
                             <img class='w-100' src='uploads/<?=$img?>?<?= time() ?>' alt='<?= getUserImage($post['id_user'])?>'>
+                        </a>
+                        
+                        <div class="dropdown-list py-4 px-3">
+                            
+                            <p>Bonjour, <?= $username?></p>
+                            <hr>
+                            <a href='<?= $base_url ?>?page=profile' class="profile">Mon Profil</a>
+                            <a href='<?= $base_url ?>?page=friends' class="profile">Mes Amis</i></a>
+                            <a href='<?= $base_url ?>?page=logout' class="logout">Me Déconnecter</a>
                         </div>
-                        Bonjour, <?= $username?>
-                    </a>
-                    <div>
-                        <a href='<?= $base_url ?>?page=logout' class="logout"><i class="fas fa-sign-out-alt"></i></a>
-                        <a href='<?= $base_url ?>?page=profile' class="profile"><i class="fas fa-user"></i></a>
-                        <a href='<?= $base_url ?>?page=friends' class="profile"><i class="fas fa-user-friends"></i></a>
                     </div>
+                    
                     <?php } elseif($title !== 'connexion' && $title !== 'inscription') {?>
-                        <a href="<?=$base_url?>?page=login" class="account"><i class="fas fa-sign-in-alt"></i> Se connecter</a>
+                    <a href="<?=$base_url?>?page=login" class="account">
+                    <i class="fa-solid fa-person-walking-arrow-right"></i>
+                    </a>
                        
-                <?php };?>
+                <?php }?>
             </header>
                 <?= $content?>
             </main>
+            
+            <?php if ($isConnected){?>
             <!-- FOOTER -->
             <footer class="text-center text-lg-start position-sticky">
                 <!-- Copyright -->
@@ -56,9 +69,12 @@ global $isConnected;
                     <a class="text-light" href="<?= $base_url?>">freedom.com</a>
                 </div>
             </footer>
+            <?php }?>
         </div>
-        
+
         <!-- BOOSTRAP -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>        
     </body>
 </html>

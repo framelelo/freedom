@@ -31,20 +31,23 @@ function Subscription(){
           $email  = $_POST['email']; 
            $password = $_POST['password']; 
            $confirmed_password = $_POST['confirmation_password']; 
-          
-            $image_name = null; 
-        
-            if (!empty($_FILES['profile_img']['name'])) {
-                $image_name = time() . '_' . $_FILES['profile_img']['name'];
-        
-                $temp_folder = $_FILES['profile_img']['tmp_name'];
-                $upload_folder = ROOT_PATH . "/uploads/" . $image_name;
-                
-                $result = move_uploaded_file($temp_folder, $upload_folder);
-                if (!$result) {
-                    echo "Merci de vérifier l'image.";
-                }
-            }
+           
+           $image_name = null;
+
+           $image_name = time() . '_' . $_FILES['post_img']['name'];
+           $temp_folder = $_FILES['post_img']['tmp_name'];
+           $upload_folder = ROOT_PATH . "/uploads/" . $image_name;
+           
+           if (!empty($_FILES['post_img']['name'])) {
+               $result = move_uploaded_file($temp_folder, $upload_folder);
+               
+               if (!$result) {
+                   echo "Merci de vérifier.";
+               }
+            else {
+               $image_name = 'default_profile_img.png'; 
+           }
+        }
             if ($gender && $image_name && $username && $email && $password) {
               
                 if ($password === $confirmed_password) {

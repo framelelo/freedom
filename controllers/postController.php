@@ -26,7 +26,6 @@ function CreatePostAction() {
                     echo "Merci de vérifier.";
                 }
             } else {
-                $default_image_path = $upload_folder; 
                 $image_name = 'default_post_img.png'; 
             }
             
