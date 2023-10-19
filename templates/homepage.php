@@ -14,7 +14,7 @@ $title="accueil";
             <form method="POST" action="<?php $base_url?>?page=publish&a=create" class="form_publish bg-color mb-5 p-3" enctype="multipart/form-data">
 
                 <div class="form-group mb-3">
-                    <label class='label' for="post_title">Titre</label>
+                    <h3>Exprimez-vous !</h3>
                     <input type="file" class="form-control" name="post_img" accept= '.jpeg,.png,.jpg'>
                     <input type="text" class="form-control" name="post_title" placeholder="Titre" required>
                 </div>
